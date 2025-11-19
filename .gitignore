@@ -361,26 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-
-# Ignorar todo
-*
-
-# Mantener .gitignore
-!.gitignore
-
-# No ignorar directorios (necesario para poder incluir archivos dentro)
-!*/
-
-# Incluir únicamente código fuente: archivos .cs y .xaml
-!*.cs
-!*.xaml
-!*.txt
-!*.md
-
-# Si necesitas permitir también archivos .resx o .config, añade aquí:
-#!*.resx
-#!*.config
-
-# Nota:
-# Este .gitignore hará que sólo se añadan al repo los archivos con extensión .cs y .xaml.
-# Si quieres incluir también .sln, .csproj o recursos, descomenta o añade las líneas apropiadas
