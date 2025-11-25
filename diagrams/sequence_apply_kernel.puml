@@ -1,0 +1,17 @@
+@startuml sequence_apply_kernel
+' Diagrama de secuencia para aplicar un kernel
+actor Usuario
+participant MainWindow
+participant ConvolveImage as "ConvolveImage()"
+participant WriteableBitmap
+
+Usuario -> MainWindow : Cargar imagen (Open Image)
+MainWindow -> ConvolutionKernels : (reflexión) Obtener kernels
+Usuario -> MainWindow : Seleccionar kernel y "Aplicar kernel"
+MainWindow -> ConvolveImage : ConvolveImage(kernel, src)
+ConvolveImage -> ConvolveImage : Copiar píxeles y preparar buffers
+ConvolveImage -> ConvolveImage : Recorrer píxeles (Parallel.For)
+ConvolveImage -> WriteableBitmap : Escribir píxeles resultantes
+ConvolveImage -> MainWindow : Retorna WriteableBitmap
+MainWindow -> UI : Mostrar imagen procesada
+@enduml

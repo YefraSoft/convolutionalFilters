@@ -1,0 +1,29 @@
+@startuml class_diagram
+' Diagrama de clases simplificado del proyecto editor_piolin
+package "editor_piolin" {
+  class MainWindow {
+    - BitmapImage? _image
+    + MainWindow()
+    + PopulateKernelCombo()
+    + GetImage(sender, e)
+    + ApplyKernel_Click(sender, e)
+    + ConvolveImage(kernel, src) : WriteableBitmap
+  }
+
+  class ConvolutionKernels {
+    {static} + Media3x3 : float[][]
+    {static} + SobelH : float[][]
+    {static} + SobelV : float[][]
+    {static} + Laplaciano3 : float[][]
+  }
+
+  class KernelItem {
+    + DisplayName : string
+    + Kernel : float[][]
+    + ToString() : string
+  }
+
+  MainWindow "1" o-- "*" KernelItem : contiene
+  MainWindow ..> ConvolutionKernels : refleja campos static
+}
+@enduml
